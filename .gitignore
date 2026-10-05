@@ -1,0 +1,6 @@
+# Local metadata and generated compilation outputs.
+.DS_Store
+._*
+*.o
+*.obj
+*.dSYM/
