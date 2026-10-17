@@ -1,6 +1,12 @@
 # BPC Tetris — 2026-10-05 Window Experiments
 
-This directory preserves every experiment branch produced in the 2026-10-05 development window and separates **world fitting** from **operation fitting**.
+This directory retains distinct experimental evidence from the 2026-10-05 development window and separates **world fitting** from **operation fitting**. Overlapping stage narratives are summarized once; raw negative results and executable source remain available.
+
+## Current state (single authoritative checkpoint)
+
+**Promoted world-fit: v0.40b.** Its formal regression is 312,839/312,839 ticks (8 seeds), 10,000/10,000 clear stress, and 2,500/2,500 vertical non-clear; O2/O3 match and UBSan smoke is clean. The later v0.41 scheduler pilot is *not* formally promoted; v0.42/v0.43 geometry changes remain partial/negative. Autoplay verification tests **world dynamics** with an **external** player, not learned operation policy.
+
+Reading order: [promoted v0.40b report](binary-worldfit-v0.39-v0.40b/REPORT.md) → [v0.41–0.43 limits](binary-worldfit-v0.41-v0.43/REPORT.md) → [the complete prior v0.27–0.38a evidence](binary-worldfit-v0.27-v0.38a/REPORT.md) → [raw results & historical snapshots](binary-worldfit-v0.27-v0.40/).
 
 ## Research rule
 
@@ -44,7 +50,7 @@ The capability floor is Minimal v2.1's fully observable `visible state + action 
 - **v0.1**: removes the dedicated LineClear propagation function; row relocation reuses the learned Down function. 8-seed rollout remains 312,839/312,839 exact; 1–4 line stress 10,000/10,000.
 - **v0.2**: deletes the learned three-bit `QGate`; Spawn and LineClear remain always eligible and jointly relax to a fixed point. Full 8-seed regression and LineClear stress remain 100%.
 
-Status: **current baseline = Best World-Fit v0.2**.
+Status: **Historical baseline = Best World-Fit v0.2** (superseded by v0.40b).
 
 ## Current purity frontier
 
@@ -67,7 +73,7 @@ Current strict world-fitting frontier after the black/white-screen correction.
 
 Current boundary: v0.20 unifies storage/readout, but family-specific training observers still exist before export into the shared field. The next target is direct generic residual writeback into this same field.
 
-**Current world-fit frontier = Binary World-Fit v0.20.**
+**Historical checkpoint = Binary World-Fit v0.20.**
 
 
 ### `binary-worldfit-v0.21-v0.26/`
@@ -82,7 +88,7 @@ Direct shared-field learning and removal of handwritten collision / clear propag
 - **v0.25b** positive/current stable checkpoint: opposite-boundary local waves must interfere; no whole-chain scanner. 1–4 line stress 10,000/10,000, vertical negative 2,500/2,500, 8-seed rollout 312,839/312,839, O2/O3 diff 0, UBSan clean.
 - **v0.26** pilot: removes lock-triggered downstream scheduling and preserves capability, but computational cost increases substantially; not yet promoted.
 
-**Current stable world-fit frontier = Binary World-Fit v0.25b.**
+**Historical stable checkpoint = Binary World-Fit v0.25b.**
 
 
 ### `autoplay-verification-v0.25b/`
@@ -117,23 +123,12 @@ Remaining high-value scaffolds are geometry micro curriculum/observer, transient
 
 
 ### `binary-worldfit-v0.27-v0.40/`
-Purity-compression continuation from the black/white world-fit line.
 
-Key promoted results:
-- v0.27 removes function-family namespaces from SharedField addresses.
-- v0.28b learns Action lifetime from ordinary visible trajectories.
-- v0.29 learns route consequences from visible-transition residuals.
-- v0.30b learns Spawn displacement from ordinary visible transitions.
-- v0.38 solves closure credit using whole-world leave-one-coupling-out residuals from ordinary play only; clear stress 10,000/10,000 and 8-seed rollout 312,839/312,839.
-- v0.39 relearns Spawn/GameOver split only from ordinary lock transitions; no dedicated blocked/unblocked Spawn curriculum; full regression remains exact.
-- v0.40 relearns empty/occupied/boundary compatibility only from ordinary visible game transitions by global ON/OFF counterfactual residual credit; no dedicated collision micro-curriculum; full regression remains exact.
+**Raw-data/source provenance only; the duplicated v0.27–v0.40 stage narrative was consolidated here.** The directory still retains [complete raw trial output](binary-worldfit-v0.27-v0.40/RAW_RESULTS.txt) and [versioned source snapshots](binary-worldfit-v0.27-v0.40/SOURCES_part01.txt) (parts 01–06). Earlier unique negative controls and the v0.38a branch remain described in [v0.27–v0.38a evidence](binary-worldfit-v0.27-v0.38a/REPORT.md). The later v0.39/v0.40/v0.40b conclusions are in the [promoted checkpoint report](binary-worldfit-v0.39-v0.40b/REPORT.md).
 
-Negative results v0.28, v0.31, v0.32b and v0.25/v0.23 predecessors are retained because they identify credit-assignment and temporal-scale failure modes.
+**v0.38 standalone milestone (distinct from v0.38a):** The v0.36–v0.37 failures showed that local pixel identity cannot reliably distinguish persistence from replacement after line shifts. v0.38 instead compared the **entire next visible frame** under each participating relation coupling ON versus OFF and wrote credit from the global residual difference, using ordinary visible play (no dedicated clear curriculum). Representative learned amplitudes: same-address death ≈0.898 and birth=0; closure-below birth ≈0.987; closure-above birth/death=0; higher-order pair gate ≈0.111. Frozen results: 1–4 line stress **10,000/10,000**, vertical non-clear **2,500/2,500**, eight-seed rollout **312,839/312,839**. This is a milestone of global reality-based credit, **not** evidence of fully semantic-free or open-world general intelligence. Retain its original raw output and C snapshots in the directory.
 
-**Current stable world-fit frontier = Binary World-Fit v0.40.**
-
-Largest remaining dedicated curriculum: geometry gauge/basis/phase still begins from researcher-designed 1/2/3-voxel micro-experience. Next target is to learn geometry from ordinary 4-cell game transitions only.
-
+**Version boundary:** v0.38's whole-world residual mechanism is different from v0.38a's ordinary-trajectory Spawn/GameOver split. Neither should be mistaken for the later v0.40b compatibility-credit improvement.
 
 ### `binary-worldfit-v0.41-v0.43/`
 Latest scheduler/geometry scaffold audit.
