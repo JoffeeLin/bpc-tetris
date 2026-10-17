@@ -11,6 +11,8 @@ This series deliberately targets structures that duplicate or privilege informat
 
 ## v1.14 — delete the special Gauge relation family
 
+The exact v1.14 equivalence C audit and its raw result are stored **once** in [the standalone v1.14 archive](../binary-worldfit-v1.14/): [source](../binary-worldfit-v1.14/v1.14_gauge_unification_equiv.c) · [result](../binary-worldfit-v1.14/v1.14_gauge_unification_equiv_RESULT.txt). The two identical copies previously in this directory were removed after Git-blob SHA verification. This report retains the v1.14 conclusion as context for the distinct v1.15–v1.17 changes.
+
 Old geometry used two relation forms:
 
 - whole-object displacement: `kgauge(Action, dx,dy)`;
